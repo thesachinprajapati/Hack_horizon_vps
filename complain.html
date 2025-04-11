@@ -13,51 +13,63 @@
     </header>
 
     <div class="container">
-        <form id="firForm">
-            <div class="form-group">
-                <label for="aadhaar">Aadhaar Number</label>
-                <input type="text" id="aadhaar" name="aadhaar" placeholder="Enter Aadhaar Number">
-            </div>
+        
+<!-- Send OTP Form -->
+<form action="http://localhost/send_otp.php" method="post">
+    <label for="phone">Phone Number (with country code):</label>
+    <input type="tel" id="phone" name="phone" placeholder="Enter Your number" required>
+     <button type="submit">Send OTP</button>
+   
+</form>
 
-            <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" placeholder="Enter Phone Number">
-                <button type="button" onclick="sendOTP()">Send OTP</button>
-            </div>
+<hr>
 
-            <div class="form-group">
-                <label for="otp">OTP</label>
-                <input type="text" id="otp" name="otp" placeholder="Enter OTP">
-            </div>
+<!-- OTP Verification Form -->
+<form action="http://localhost/verify_otp.php" method="post">
+    <label for="otp">Enter OTP:</label>
+    <input type="text" id="otp" name="otp" placeholder="Enter the OTP you received" >
+    
+    <button type="submit">Verify OTP</button>
+</form>
+        <!-- Aadhaar & Other FIR Details -->
+<form id="firForm"  enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="aadhaar">Aadhaar Number</label>
+        <input type="text" id="aadhaar" name="aadhaar" placeholder="Enter Aadhaar Number">
+    </div>
 
-            <div class="form-group">
-                <label for="category">Category of Crime</label>
-                <select id="category" name="category">
-                    <option value="">--Select Category--</option>
-                    <option value="Theft">Theft</option>
-                    <option value="Harassment">Harassment</option>
-                    <option value="Cyber Crime">Cyber Crime</option>
-                    <option value="Other">Other</option>
-                </select>
-            </div>
+    <div class="form-group">
+        <label for="category">Category of Crime</label>
+        <select id="category" name="category">
+            <option value="">--Select Category--</option>
+            <option value="Theft">Theft</option>
+            <option value="Harassment">Harassment</option>
+            <option value="Cyber Crime">Cyber Crime</option>
+            <option value="Other">Other</option>
+        </select>
+    </div>
 
-            <div class="form-group">
-                <label for="description">FIR Description</label>
-                <textarea id="description" name="description" placeholder="Describe the incident"></textarea>
-            </div>
+    <div class="form-group">
+        <label for="description">FIR Description</label>
+        <textarea id="description" name="description" placeholder="Describe the incident"></textarea>
+    </div>
 
-            <div class="form-group">
-                <label for="location">Incident Location</label>
-                <input type="text" id="location" name="location" placeholder="Enter location">
-            </div>
+    <div class="form-group">
+        <label for="location">Incident Location</label>
+        <input type="text" id="location" name="location" placeholder="Enter location">
+    </div>
 
-            <div class="form-group">
-                <label for="evidence">Upload Evidence</label>
-                <input type="file" id="evidence" name="evidence[]" multiple>
-            </div>
+    <div class="form-group">
+        <label for="evidence">Upload Evidence</label>
+        <input type="file" id="evidence" name="evidence[]" multiple>
+    </div>
 
-            <button type="submit">Preview FIR</button>
-        </form>
+    <button type="submit">Preview FIR</button>
+</form>
+
+<hr>
+
+
     </div>
 
     <script>
@@ -109,6 +121,7 @@
             }
         }
     </script>
+
 
 </body>
 </html>
