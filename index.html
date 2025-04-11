@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FIR Portal - Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    .text-justify {
+      text-align: justify;
+    }
+  </style>
+</head>
+<body class="bg-light">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">FIR Portal</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#nearestStation">Nearest Police Station</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#raiseComplaint">Raise Complaint</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#checkStatus">Check Status</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#fundamentalRights">Fundamental Rights</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Banner -->
+  <div class="container mt-4 text-center">
+    <h2 class="mb-3">Welcome to the Online FIR Portal</h2>
+    <p class="lead">File complaints, find the nearest police station, and understand your rights — all in one place.</p>
+    <div class="row mt-4 justify-content-center">
+      <div class="col-10 col-md-3 mb-3">
+        <a href="#nearestStation" class="btn btn-primary w-100 py-3">
+          <i class="bi bi-geo-alt-fill me-2 fs-4"></i>Check Police Station
+        </a>
+      </div>
+      <div class="col-10 col-md-3 mb-3">
+        <a href="#raiseComplaint" class="btn btn-danger w-100 py-3">
+          <i class="bi bi-pencil-square me-2 fs-4"></i>Raise a Complaint
+        </a>
+      </div>
+      <div class="col-10 col-md-3 mb-3">
+        <a href="#checkStatus" class="btn btn-info w-100 py-3">
+          <i class="bi bi-search me-2 fs-4"></i>Check Status
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nearest Police Station -->
+  <div class="container mt-5" id="nearestStation">
+    <div class="card">
+      <div class="card-header bg-primary text-white">Find Nearest Police Station</div>
+      <div class="card-body">
+        <p class="mb-3 text-justify">Allow location access to detect and display your nearest police station.</p>
+        <button class="btn btn-outline-primary w-100" onclick="alert('Feature under development: Will use geolocation API')">Detect Location</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Raise Online Complaint -->
+  <div class="container mt-5" id="raiseComplaint">
+    <div class="card">
+      <div class="card-header bg-warning text-dark">Raise an Online Complaint</div>
+      <div class="card-body">
+        <form>
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name">
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email">
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Complaint Details</label>
+            <textarea class="form-control" id="message" rows="4"></textarea>
+          </div>
+          <button type="submit" class="btn btn-danger w-100">Submit Complaint</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Check Complaint Status -->
+  <div class="container mt-5" id="checkStatus">
+    <div class="card">
+      <div class="card-header bg-info text-white">Check Complaint Status</div>
+      <div class="card-body">
+        <form>
+          <div class="mb-3">
+            <label for="complaintId" class="form-label">Complaint ID</label>
+            <input type="text" class="form-control" id="complaintId">
+          </div>
+          <button type="submit" class="btn btn-info w-100">Track Status</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fundamental Rights Section -->
+  <div class="container mt-5" id="fundamentalRights">
+    <div class="card">
+      <div class="card-header bg-success text-white">Fundamental Rights of Indian Citizens</div>
+      <div class="card-body">
+        <p class="text-justify">The Constitution offers all citizens, individually and collectively, some basic freedoms. These are guaranteed in the Constitution of India under Articles 12 to 35 in Part III.</p>
+        
+        <!-- Right to Equality -->
+        <div class="row mb-3 align-items-center">
+          <div class="col-4 text-center">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Right_to_Equality.svg/1200px-Right_to_Equality.svg.png" class="img-fluid" alt="Right to Equality">
+          </div>
+          <div class="col-8">
+            <h6 class="mt-2">Right to Equality (Articles 14–18)</h6>
+            <p>
+              The Right to Equality ensures that all individuals are treated equally before the law, fostering fairness and justice in society. It prohibits discrimination.
+            </p>
+          </div>
+        </div>
+
+        <!-- Right to Freedom -->
+        <div class="row mb-3 align-items-center">
+          <div class="col-4 text-center">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Freedom_of_speech_India.svg/1200px-Freedom_of_speech_India.svg.png" class="img-fluid" alt="Right to Freedom">
+          </div>
+          <div class="col-8">
+            <h6 class="mt-2">Right to Freedom (Articles 19–22)</h6>
+            <p>
+              The Right to Freedom grants individuals a variety of essential liberties, promoting personal and social growth. It includes the freedom of speech and expression.
+            </p>
+          </div>
+        </div>
+
+        <!-- Right against Exploitation -->
+        <div class="row mb-3 align-items-center">
+          <div class="col-4 text-center">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Human_trafficking_stop.svg/1200px-Human_trafficking_stop.svg.png" class="img-fluid" alt="Right against Exploitation">
+          </div>
+          <div class="col-8">
+            <h6 class="mt-2">Right against Exploitation (Articles 23–24)</h6>
+            <p>
+              This right protects people from being forced into exploitative or unfair labor conditions and fights against social evils like human trafficking.
+            </p>
+          </div>
+        </div>
+
+        <!-- Right to Freedom of Religion -->
+        <div class="row mb-3 align-items-center">
+          <div class="col-4 text-center">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Freedom_of_religion_India.svg/1200px-Freedom_of_religion_India.svg.png" class="img-fluid" alt="Right to Freedom of Religion">
+          </div>
+          <div class="col-8">
+            <h6 class="mt-2">Right to Freedom of Religion (Articles 25–28)</h6>
+            <p>
+              The Right to Freedom of Religion guarantees that individuals can freely follow, practice, and propagate the religion of their choice.
+            </p>
+          </div>
+        </div>
+
+        <!-- Cultural and Educational Rights -->
+        <div class="row mb-3 align-items-center">
+          <div class="col-4 text-center">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Cultural_rights.svg/1200px-Cultural_rights.svg.png" class="img-fluid" alt="Cultural and Educational Rights">
+          </div>
+          <div class="col-8">
+            <h6 class="mt-2">Cultural and Educational Rights (Articles 29–30)</h6>
+            <p>
+              These rights safeguard the cultural identities of minority groups, ensuring that their traditions, languages, and heritage are preserved.
+            </p>
+          </div>
+        </div>
+
+        <!-- Right to Constitutional Remedies -->
+        <div class="row mb-3 align-items-center">
+          <div class="col-4 text-center">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Supreme_Court_India.svg/1200px-Supreme_Court_India.svg.png" class="img-fluid" alt="Right to Constitutional Remedies">
+          </div>
+          <div class="col-8">
+            <h6 class="mt-2">Right to Constitutional Remedies (Articles 32–35)</h6>
+            <p>
+              The Right to Constitutional Remedies empowers individuals to seek justice if their Fundamental Rights are violated.
+            </p>
+          </div>
+        </div>
+
+        <!-- Right to Privacy -->
+        <div class="row mb-3 align-items-center">
+          <div class="col-4 text-center">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Justice-scales.svg/1024px-Justice-scales.svg.png" class="img-fluid" alt="Right to Privacy">
+          </div>
+          <div class="col-8">
+            <h6 class="mt-2">Right to Privacy (Implied under Article 21)</h6>
+            <p>
+              The Right to Privacy ensures that individuals have control over their personal information and protects their dignity.
+            </p>
+          </div>
+        </div>
+
+        <p class="text-center mt-3">Know your rights and use them to protect your dignity, equality, and justice.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="text-center mt-5 mb-3 text-muted">
+    &copy; 2025 Online FIR Portal. Empowering Citizens with Justice.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
