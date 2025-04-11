@@ -16,10 +16,19 @@
     .Gold{
       color: #ffb700 !important;
     }
+    .nav-item:hover{
+  transform: scale(1.1);
+  text-shadow: 2px 2px 5px rgba(14, 13, 13, 0.5);
+
+    }
     .logo{
       font-size: 30px !important;
       color: #C78615;
       
+    }
+    .cta-button:hover{
+      background-color:#ffb73a !important;
+      box-shadow: 0px 5px 15px 0px rgba(255, 217, 0, 0.866);
     }
     header .btn{
   background: #091F42 ;
@@ -33,9 +42,16 @@
      color:#fff !important;
     
     }
-    .fundamentalSection{
+    header .btn:active{
+    box-shadow: 0px 5px 15px 0px rgba(255, 217, 0, 0.866);
+    background: #ffb73a !important;
+    border: solid 2px #fff;
+     color:#fff !important;
+    
+    }
+    .fundamentalSection .card{
     border-color: transparent;
-    padding: 20px 100px;
+    padding: 20px 100px !important;
     }
     #fundamentalRights .card {
       padding: 10px;
@@ -78,10 +94,12 @@
 }
 .fundaimag1{
   border-radius: 10px;
+  box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.35);
 
 }
 .fundaimag2{
   border-radius:10px  ;
+  box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.35);
 }
 
 .welcome-section .container {
@@ -123,8 +141,9 @@
   transition: background 0.3s ease;
 }
 
-.cta-button:hover {
-  background-color: #e63946;
+.cta-button:active {
+  border: solid 2px #fff;
+  
 }
 header{
 background: #152D66;
@@ -200,20 +219,20 @@ background: linear-gradient(180deg, #152D66, #FFFFFF);
 
 .social-icons a {
   margin-right: 15px;
-  font-size: 20px;
+  font-size: 40px;
   color: #ccc;
   transition: color 0.3s;
   text-decoration: none;
 }
 
 .social-icons a:hover {
-  color: #fe2525;
+  color: #152D66;
 }
 
 .footer-bottom {
   text-align: center;
   border-top: 1px solid #444;
-  margin-top: 30px;
+  margin-top: 35px;
   padding-top: 20px;
   font-size: 13px;
   color: #777;
@@ -228,6 +247,10 @@ background: linear-gradient(180deg, #152D66, #FFFFFF);
     text-shadow: 2px 3px 3px rgba(90, 89, 89, 0.844);
 }
 
+#map {
+      height: 500px;
+      width: 100%;
+    }
 
 
 /* Responsive */
@@ -239,8 +262,25 @@ background: linear-gradient(180deg, #152D66, #FFFFFF);
   .social-icons {
     justify-content: center;
   }
+  .fundamentalSection .card{
+    border-color: transparent;
+    padding: 20px 10px !important;
+    font-size: 10px;
 
+  }
+  .fundamentalSection .card h6{
+    
+    font-size: 13px !important;
+    text-align: center;
+
+  }
+  .welcome-section {
+    background:none;
+    
+  }
 }
+ 
+
     
   </style>
 </head>
@@ -266,7 +306,7 @@ background: linear-gradient(180deg, #152D66, #FFFFFF);
             <a class="nav-link Gold" href="#fundamentalRights">Fundamental Rights</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link Gold" href="#ContactUS">Cotact us</a>
+            <a class="nav-link Gold" href="#ContactUS">Contact us</a>
           </li>
         </ul>
       </div>
@@ -278,11 +318,7 @@ background: linear-gradient(180deg, #152D66, #FFFFFF);
     <h2 class="mb-3 Gold">Welcome to the Online FIR Portal</h2>
     <p class="lead">File complaints, find the nearest police station, and understand your rights — all in one place.</p>
     <div class="row mt-4 justify-content-center">
-      <div class="col-10 col-md-3 mb-3">
-        <a href="#nearestStation" class="btn  w-100 py-3">
-          <i class="bi bi-geo-alt-fill me-2 fs-4"></i>Check Police Station
-        </a>
-      </div>
+    
       <div class="col-10 col-md-3 mb-3">
         <a href="#raiseComplaint" class="btn w-100 py-3">
           <i class="bi bi-pencil-square me-2 fs-4"></i>Raise a Complaint
@@ -291,6 +327,11 @@ background: linear-gradient(180deg, #152D66, #FFFFFF);
       <div class="col-10 col-md-3 mb-3">
         <a href="#checkStatus" class="btn  w-100 py-3">
           <i class="bi bi-search me-2 fs-4"></i>Check Status
+        </a>
+      </div>
+      <div class="col-10 col-md-3 mb-3">
+        <a href="#nearestStation" class="btn  w-100 py-3">
+          <i class="bi bi-geo-alt-fill me-2 fs-4"></i>Check Police Station
         </a>
       </div>
     </div>
@@ -337,10 +378,10 @@ background: linear-gradient(180deg, #152D66, #FFFFFF);
         
         <!-- Right to Equality -->
         <div class="row fundamentalRights mb-3 align-items-center">
-          <div class="col-4 ">
+          <div class="col-lg-5 col-12 ">
             <img src="Right_to_Equality.png" class="img-fluid fundaimag1" alt="Right to Equality">
           </div>
-          <div class="col-6">
+          <div class="col-lg-7 col-12">
             <h6 class="mt-2">Right to Equality (Articles 14–18)</h6>
             <p>
                 The Right to Equality is pivotal to the Indian Constitution as it ensures fairness and justice for all citizens. It is covered under Articles 14 to 18 and establishes that all people are equal before the law. Article 14 emphasizes equality in legal matters, ensuring that everyone—regardless of religion, race, caste, gender, or birthplace—receives the same treatment under judicial scrutiny. Article 15 prohibits discrimination in public spaces, education, and employment on the grounds of religion, race, caste, sex, or place of birth. This provision guarantees open access to opportunities and eliminates prejudice in areas essential for personal growth. Article 16 provides equal opportunities in public employment, ensuring merit-based access to government positions. Article 17 abolishes untouchability, criminalizing practices that demean marginalized communities and ensuring social dignity for all citizens. Article 18 disallows titles like "Raja" or "Sir" that perpetuate hierarchical systems, except for military or academic awards. Together, these measures create a democratic environment based on equality and respect, building a society where individual identity is celebrated and discrimination is minimized. The Right to Equality stands as a guardian against inequality and injustice, reinforcing India’s values of inclusivity and social justice.
@@ -351,13 +392,13 @@ background: linear-gradient(180deg, #152D66, #FFFFFF);
         <!-- Right to Freedom -->
         <div class="row mb-3 align-items-center">
 
-          <div class="col-6">
+          <div class="col-lg-7 col-12">
             <h6 class="mt-2">Right to Freedom (Articles 19–22)</h6>
             <p>
                 The Right to Freedom, enshrined in Articles 19 to 22, empowers individuals with essential liberties while balancing personal freedom with societal responsibility. Article 19 grants six fundamental freedoms: speech and expression, peaceful assembly, association, movement across India, residence anywhere, and choosing any profession. These freedoms help individuals pursue personal growth and contribute to society. However, they come with reasonable restrictions to maintain public order, ensure national security, and protect morality. Article 20 protects citizens against double jeopardy, self-incrimination, and retrospective penal laws. Article 21 guarantees the right to life and personal liberty, ensuring fair treatment and protection from unlawful actions. Additionally, Article 21A mandates free and compulsory education for children aged 6-14, underscoring the importance of accessible learning. Article 22 provides protection against arbitrary arrest and detention, allowing citizens to know the grounds of their arrest and consult legal representatives. Together, these freedoms foster self-expression and empower individuals to live with dignity while preserving the country’s legal and moral fabric. The Right to Freedom underlines India’s democratic spirit and its commitment to safeguarding individual liberties.
             </p>
           </div>   
-          <div class="col-4 ">
+          <div class="col-lg-5 col-12 ">
             <img src="Right_to_Freedom.png" class="img-fluid fundaimag2" alt="Right to Freedom">
           </div>
 
@@ -365,10 +406,10 @@ background: linear-gradient(180deg, #152D66, #FFFFFF);
 
         <!-- Right against Exploitation -->
         <div class="row fundamentalRights mb-3 align-items-center">
-          <div class="col-4 ">
+          <div class="col-lg-5 col-12 ">
             <img src="Right_against_Exploitation.png" class=" fundaimag1 img-fluid" alt="Right against Exploitation">
           </div>
-          <div class="col-6">
+          <div class="col-lg-7 col-12">
             <h6 class="mt-2">Right against Exploitation (Articles 23–24)</h6>
             <p>
                 The Right against Exploitation, detailed in Articles 23 and 24, protects individuals from unfair treatment and abuse. It is designed to prevent social evils like human trafficking, forced labor, and exploitation of children in hazardous industries. Article 23 prohibits human trafficking and bonded labor, making such practices punishable offenses. Bonded labor is a system where individuals are forced to work in degrading conditions to repay debts, often without fair compensation—this article criminalizes such exploitation. Additionally, it protects workers from being exploited for low or no wages and establishes fair working conditions. Article 24 safeguards children by prohibiting their employment in hazardous industries like mining, construction, and factories. This measure ensures a safe and healthy childhood for the future citizens of the country. Both articles work together to create a humane working environment where dignity is preserved and exploitation is minimized. The Right against Exploitation serves as a foundation for ethical labor practices and emphasizes India’s resolve to build a society rooted in justice and human rights.
@@ -379,23 +420,23 @@ background: linear-gradient(180deg, #152D66, #FFFFFF);
         <!-- Right to Freedom of Religion -->
         <div class="row mb-3 align-items-center">
           
-          <div class="col-6">
+          <div class="col-lg-7 col-12">
             <h6 class="mt-2">Right to Freedom of Religion (Articles 25–28)</h6>
             <p>
                 The Right to Freedom of Religion, covered in Articles 25 to 28, guarantees religious liberty in India’s secular framework. Article 25 allows individuals the freedom to follow, practice, and propagate their religion peacefully, provided it does not disrupt public order or morality. Article 26 gives religious groups the autonomy to manage their institutions, properties, and affairs independently. This ensures that religious diversity thrives without undue interference. Article 27 prohibits individuals from being forced to pay taxes specifically for religious purposes, maintaining a neutral stance toward all faiths. Article 28 restricts religious education in government-funded schools, ensuring that educational institutions respect India’s secular principles. Collectively, these articles ensure the coexistence of diverse religious beliefs, promoting mutual respect and harmony in society. The Right to Freedom of Religion protects individuals and groups from religious coercion, enabling them to follow their faith freely. It exemplifies India’s commitment to secularism, encouraging cultural unity while embracing differences
             </p>
           </div>
-          <div class="col-4 ">
+          <div class="col-lg-5 col-12 ">
             <img src="Freedom_Religion.png" class="img-fluid fundaimag2" alt="Right to Freedom of Religion">
           </div>
         </div>
 
         <!-- Cultural and Educational Rights -->
         <div class="row fundamentalRights mb-3 align-items-center">
-          <div class="col-4 ">
+          <div class="col-lg-5 col-12 ">
             <img src="Educational_Rights.png" class="img-fluid fundaimag1" alt="Cultural and Educational Rights">
           </div>
-          <div class="col-6">
+          <div class="col-lg-7 col-12">
             <h6 class="mt-2">Cultural and Educational Rights (Articles 29–30)</h6>
             <p>
                 Cultural and Educational Rights, enshrined in Articles 29 and 30, protect the identity and traditions of minority communities. Article 29 ensures that minorities can conserve their language, script, and culture without interference. It guarantees them the freedom to celebrate their heritage, contributing to India’s rich diversity. Article 30 empowers minorities to establish and manage their educational institutions to teach their children about their cultural values and language. It further protects them from unfair treatment by authorities in matters concerning their institutions. These rights promote inclusivity and ensure that minority groups can thrive while enriching the nation’s cultural fabric. By safeguarding these rights, the Constitution creates an environment where every community feels valued and supported. Cultural and Educational Rights underscore India’s ethos of unity in diversity, fostering harmony and mutual respect among its people.
@@ -406,23 +447,23 @@ background: linear-gradient(180deg, #152D66, #FFFFFF);
         <!-- Right to Constitutional Remedies -->
         <div class="row mb-3 align-items-center">
           
-          <div class="col-6">
+          <div class="col-lg-7 col-12">
             <h6 class="mt-2">Right to Constitutional Remedies (Articles 32–35)</h6>
             <p>
                 The Right to Constitutional Remedies, outlined in Articles 32 to 35, empowers citizens to seek justice if their Fundamental Rights are violated. It allows individuals to approach the Supreme Court or High Courts for legal intervention. Courts can issue writs to protect these rights, such as habeas corpus (ensuring no unlawful detention), mandamus (compelling officials to perform their duties), prohibition (preventing lower courts from exceeding their power), certiorari (reviewing lower court decisions), and quo warranto (challenging the authority of officials). This right is significant because it safeguards democracy by holding institutions accountable and ensuring justice for citizens. Article 32 is often referred to as the "heart and soul" of the Constitution because it provides the mechanism for enforcing Fundamental Rights. The Right to Constitutional Remedies reflects India’s commitment to protecting its citizens, ensuring that every individual’s rights are upheld and respected.
             </p>
           </div>
-          <div class="col-4 ">
+          <div class="col-lg-5 col-12 ">
             <img src="Constitutional_Remedies.png" class="img-fluid fundaimag2" alt="Right to Constitutional Remedies">
           </div>
         </div>
 
         <!-- Right to Privacy -->
         <div class="row fundamentalRights mb-3 align-items-center">
-          <div class="col-4 ">
+          <div class="col-lg-5 col-12 ">
             <img src="Right_to_Privacy.png" class="img-fluid fundaimag1"  alt="Right to Privacy">
           </div>
-          <div class="col-6">
+          <div class="col-lg-7 col-12">
             <h6 class="mt-2">Right to Privacy (Implied under Article 21)</h6>
             <p>
                 The Right to Privacy is an essential aspect of individual liberty and dignity, recognized as a fundamental right under Article 21 of the Indian Constitution. Although not explicitly mentioned in the Constitution, the Supreme Court of India affirmed its status in the landmark Justice K.S. Puttaswamy (Retd.) v. Union of India (2017) case. The court ruled that privacy is intrinsic to the right to life and personal liberty, making it a constitutional guarantee.
@@ -439,6 +480,11 @@ background: linear-gradient(180deg, #152D66, #FFFFFF);
     </div>
   </div>
 </section>
+<!-- <section class="mapsection">
+  <h2>Find Nearest Police Station</h2>
+  <div id="map"></div>
+
+</section> -->
 
   <!-- Footer -->
 
@@ -476,7 +522,6 @@ background: linear-gradient(180deg, #152D66, #FFFFFF);
     </div>
   </footer>
   
-  
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/boots
