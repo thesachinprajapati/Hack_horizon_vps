@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FIR Preview UI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>Smart FIR Filing & Case Tracking Portal</h1>
+  </header>
+
+  <div class="container">
+    <form id="firForm">
+      <div class="form-group">
+        <label for="aadhaar">Aadhaar Number</label>
+        <input type="text" id="aadhaar" placeholder="Enter Aadhaar Number">
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" placeholder="Enter Phone Number">
+        <button type="button" onclick="sendOTP()">Send OTP</button>
+      </div>
+
+      <div class="form-group">
+        <label for="otp">OTP</label>
+        <input type="text" id="otp" placeholder="Enter OTP">
+      </div>
+
+      <div class="form-group">
+        <label for="category">Category of Crime</label>
+        <select id="category">
+          <option value="">--Select Category--</option>
+          <option>Theft</option>
+          <option>Harassment</option>
+          <option>Cyber Crime</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="description">FIR Description</label>
+        <textarea id="description" placeholder="Describe the incident"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="location">Incident Location</label>
+        <input type="text" id="location" placeholder="Enter location">
+      </div>
+
+      <div class="form-group">
+        <label for="evidence">Upload Evidence</label>
+        <input type="file" id="evidence" multiple>
+      </div>
+
+      <button type="submit">Preview FIR</button>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('firForm');
+  
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+  
+      const aadhaar = document.getElementById('aadhaar').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const otp = document.getElementById('otp').value.trim();
+      const category = document.getElementById('category').value;
+      const description = document.getElementById('description').value.trim();
+      const location = document.getElementById('location').value.trim();
+      const files = document.getElementById('evidence').files;
+  
+      // Store form fields in sessionStorage
+      sessionStorage.setItem('aadhaar', aadhaar);
+      sessionStorage.setItem('phone', phone);
+      sessionStorage.setItem('otp', otp);
+      sessionStorage.setItem('category', category);
+      sessionStorage.setItem('description', description);
+      sessionStorage.setItem('location', location);
+  
+      // Convert file uploads to base64
+      const readerPromises = Array.from(files).map(file => {
+        return new Promise(resolve => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result);
+          reader.readAsDataURL(file);
+        });
+      });
+  
+      // After evidence is converted, save and go to preview page
+      Promise.all(readerPromises).then(base64List => {
+        sessionStorage.setItem('evidenceList', JSON.stringify(base64List));
+        window.location.href = 'preview.html'; // open preview page in same tab
+      });
+    });
+  
+    function sendOTP() {
+      const phone = document.getElementById('phone').value.trim();
+      if (phone.length === 10) {
+        alert("OTP has been sent to " + phone);
+      } else {
+        alert("Please enter a valid 10-digit phone number.");
+      }
+    }
+  </script>
+  
+
+</body>
+</html>

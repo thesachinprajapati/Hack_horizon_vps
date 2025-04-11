@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FIR Preview</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .preview-box {
+      max-width: 700px;
+      margin: 2rem auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.15);
+    }
+
+    .preview-box h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .preview-field {
+      margin-bottom: 1.5rem;
+    }
+
+    .preview-field strong {
+      display: inline-block;
+      width: 180px;
+      font-weight: bold;
+    }
+
+    .evidence-img {
+      max-width: 120px;
+      max-height: 120px;
+      margin: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Smart FIR Filing & Case Tracking Portal</h1>
+  </header>
+
+  <div class="preview-box">
+    <h2>FIR Preview</h2>
+
+    <div class="preview-field"><strong>Aadhaar Number:</strong> <span id="prevAadhaar"></span></div>
+    <div class="preview-field"><strong>Phone Number:</strong> <span id="prevPhone"></span></div>
+    <div class="preview-field"><strong>OTP:</strong> <span id="prevOTP"></span></div>
+    <div class="preview-field"><strong>Crime Category:</strong> <span id="prevCategory"></span></div>
+    <div class="preview-field"><strong>Description:</strong> <span id="prevDescription"></span></div>
+    <div class="preview-field"><strong>Location:</strong> <span id="prevLocation"></span></div>
+    <div class="preview-field">
+      <strong>Uploaded Evidence:</strong>
+      <div id="prevEvidence"></div>
+    </div>
+    <button onclick="window.location.href='complain.html'">Back to Edit</button>
+
+    <button type="submit">Submit</button>
+  </div>
+
+  <script>
+    // Retrieve data from sessionStorage
+    document.getElementById('prevAadhaar').textContent = sessionStorage.getItem('aadhaar') || 'N/A';
+    document.getElementById('prevPhone').textContent = sessionStorage.getItem('phone') || 'N/A';
+    document.getElementById('prevOTP').textContent = sessionStorage.getItem('otp') || 'N/A';
+    document.getElementById('prevCategory').textContent = sessionStorage.getItem('category') || 'N/A';
+    document.getElementById('prevDescription').textContent = sessionStorage.getItem('description') || 'N/A';
+    document.getElementById('prevLocation').textContent = sessionStorage.getItem('location') || 'N/A';
+
+    const evidencePreview = document.getElementById('prevEvidence');
+    const evidenceList = JSON.parse(sessionStorage.getItem('evidenceList') || '[]');
+
+    evidenceList.forEach(src => {
+      const img = document.createElement('img');
+      img.src = src;
+      img.className = 'evidence-img';
+      evidencePreview.appendChild(img);
+    });
+    // Store data to sessionStorage
+sessionStorage.setItem('aadhaar', aadhaar);
+sessionStorage.setItem('phone', phone);
+sessionStorage.setItem('otp', otp);
+sessionStorage.setItem('category', category);
+sessionStorage.setItem('description', description);
+sessionStorage.setItem('location', location);
+
+// Convert uploaded evidence files to base64
+const readerPromises = Array.from(files).map(file => {
+  return new Promise(resolve => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.readAsDataURL(file);
+  });
+});
+
+Promise.all(readerPromises).then(base64List => {
+  sessionStorage.setItem('evidenceList', JSON.stringify(base64List));
+  window.location.href = 'preview.html';
+});
+
+  </script>
+
+</body>
+</html>
