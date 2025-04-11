@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FIR Preview</title>
   <link rel="stylesheet" href="style.css" />
   <style>
@@ -12,7 +13,7 @@
       background: white;
       padding: 2rem;
       border-radius: 10px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.15);
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
     }
 
     .preview-box h2 {
@@ -39,6 +40,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <header>
@@ -60,7 +62,19 @@
     </div>
     <button onclick="window.location.href='complain.html'">Back to Edit</button>
 
-    <button type="submit">Submit</button>
+    <form action="complaint.php" method="post">
+      <input type="hidden" name="aadhaar" id="formAadhaar">
+      <input type="hidden" name="phone" id="formPhone">
+      <input type="hidden" name="otp" id="formOTP">
+      <input type="hidden" name="category" id="formCategory">
+      <input type="hidden" name="description" id="formDescription">
+      <input type="hidden" name="location" id="formLocation">
+      <input type="hidden" name="evidenceList" id="formEvidence">
+      <button type="submit">Submit</button>
+    </form>
+
+
+
   </div>
 
   <script>
@@ -82,28 +96,29 @@
       evidencePreview.appendChild(img);
     });
     // Store data to sessionStorage
-sessionStorage.setItem('aadhaar', aadhaar);
-sessionStorage.setItem('phone', phone);
-sessionStorage.setItem('otp', otp);
-sessionStorage.setItem('category', category);
-sessionStorage.setItem('description', description);
-sessionStorage.setItem('location', location);
+    sessionStorage.setItem('aadhaar', aadhaar);
+    sessionStorage.setItem('phone', phone);
+    sessionStorage.setItem('otp', otp);
+    sessionStorage.setItem('category', category);
+    sessionStorage.setItem('description', description);
+    sessionStorage.setItem('location', location);
 
-// Convert uploaded evidence files to base64
-const readerPromises = Array.from(files).map(file => {
-  return new Promise(resolve => {
-    const reader = new FileReader();
-    reader.onload = () => resolve(reader.result);
-    reader.readAsDataURL(file);
-  });
-});
+    // Convert uploaded evidence files to base64
+    const readerPromises = Array.from(files).map(file => {
+      return new Promise(resolve => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.readAsDataURL(file);
+      });
+    });
 
-Promise.all(readerPromises).then(base64List => {
-  sessionStorage.setItem('evidenceList', JSON.stringify(base64List));
-  window.location.href = 'preview.html';
-});
+    Promise.all(readerPromises).then(base64List => {
+      sessionStorage.setItem('evidenceList', JSON.stringify(base64List));
+      window.location.href = 'preview.html';
+    });
 
   </script>
 
 </body>
+
 </html>
