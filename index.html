@@ -30,10 +30,15 @@
       background-color:#ffb73a !important;
       box-shadow: 0px 5px 15px 0px rgba(255, 217, 0, 0.866);
     }
+    header{
+      background: #152D66;
+      background: linear-gradient(180deg, #152D66, #FFFFFF);
+
+      }
     header .btn{
-  background: #091F42 ;
-  background: radial-gradient(at center top, #091F42, #000D28) ;
-  color: #fff !important;
+      background: #091F42 ;
+      background: radial-gradient(at center top, #091F42, #000D28) ;
+      color: #fff !important;
     }
     header .btn:hover{
     box-shadow: 0px 5px 15px 0px rgba(255, 217, 0, 0.866);
@@ -42,6 +47,7 @@
      color:#fff !important;
     
     }
+
     header .btn:active{
     box-shadow: 0px 5px 15px 0px rgba(255, 217, 0, 0.866);
     background: #ffb73a !important;
@@ -145,11 +151,7 @@
   border: solid 2px #fff;
   
 }
-header{
-background: #152D66;
-background: linear-gradient(180deg, #152D66, #FFFFFF);
 
-}
 
 
 
@@ -295,7 +297,9 @@ background: linear-gradient(180deg, #152D66, #FFFFFF);
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-        
+          <li class="nav-item">
+            <a class="nav-link Gold" href="#">Home</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link Gold" href="complain.html">Raise Complaint</a>
           </li>
@@ -320,17 +324,17 @@ background: linear-gradient(180deg, #152D66, #FFFFFF);
     <div class="row mt-4 justify-content-center">
     
       <div class="col-10 col-md-3 mb-3">
-        <a href="#raiseComplaint" class="btn w-100 py-3">
+        <a href="complain.html" class="btn w-100 py-3">
           <i class="bi bi-pencil-square me-2 fs-4"></i>Raise a Complaint
         </a>
       </div>
       <div class="col-10 col-md-3 mb-3">
-        <a href="#checkStatus" class="btn  w-100 py-3">
+        <a href="checkstatus.html" class="btn  w-100 py-3">
           <i class="bi bi-search me-2 fs-4"></i>Check Status
         </a>
       </div>
       <div class="col-10 col-md-3 mb-3">
-        <a href="#nearestStation" class="btn  w-100 py-3">
+        <a href="MapLocation" class="btn  w-100 py-3">
           <i class="bi bi-geo-alt-fill me-2 fs-4"></i>Check Police Station
         </a>
       </div>
@@ -358,7 +362,7 @@ background: linear-gradient(180deg, #152D66, #FFFFFF);
       <p>
         Together, let's build a safer and more secure society — where your voice is heard, your rights are respected, and justice is delivered.
       </p>
-      <a href="#file-fir" class="cta-button">File FIR Now</a>
+      <a href="complain.html" class="cta-button">File FIR Now</a>
     </div>
   </section>
   
@@ -524,4 +528,6 @@ background: linear-gradient(180deg, #152D66, #FFFFFF);
   
   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
   <script src="script.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/boots
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/boots"></script>
+</body>
+</html>
