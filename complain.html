@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online FIR Filing Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>Smart FIR Filing & Case Tracking Portal</h1>
+  </header>
+
+  <div class="container">
+    <form id="firForm">
+      <div class="form-group">
+        <label for="aadhaar">Aadhaar Number</label>
+        <input type="text" id="aadhaar" placeholder="Enter Aadhaar Number">
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" placeholder="Enter Phone Number">
+        <button type="button" onclick="sendOTP()">Send OTP</button>
+      </div>
+      
+      <div class="form-group">
+        <label for="otp">OTP Verification</label>
+        <input type="text" id="otp" placeholder="Enter OTP">
+      </div>
+      
+
+      <div class="form-group">
+        <label for="category">Category of Crime</label>
+        <select id="category">
+          <option value="">--Select Category--</option>
+          <option>Theft</option>
+          <option>Harassment</option>
+          <option>Cyber Crime</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="description">FIR Description</label>
+        <textarea id="description" placeholder="Describe the incident"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="evidence">Upload Evidence</label>
+        <input type="file" id="evidence" multiple>
+      </div>
+
+      <div class="form-group">
+        <label for="location">Incident Location</label>
+        <input type="text" id="location" placeholder="Enter address or area">
+      </div>
+
+      <button type="submit">Preview FIR</button>
+    </form>
+  </div>
+
+  <div id="previewModal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <h2>FIR Preview</h2>
+      <p id="previewContent"></p>
+      <button onclick="closeModal()">Close</button>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('firForm');
+    const modal = document.getElementById('previewModal');
+    const previewContent = document.getElementById('previewContent');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const aadhaar = document.getElementById('aadhaar').value;
+      const phone = document.getElementById('phone').value;
+      const otp = document.getElementById('otp').value;
+      const category = document.getElementById('category').value;
+      const description = document.getElementById('description').value;
+      const location = document.getElementById('location').value;
+
+      let idInfo = aadhaar ? Aadhaar: ${aadhaar} : Phone: ${phone};
+
+      let previewText = ${idInfo}\nOTP: ${otp}\nCategory: ${category}\nDescription: ${description}\nLocation: ${location};
+
+      previewContent.innerText = previewText;
+      modal.style.display = 'block';
+    });
+
+    function closeModal() {
+      modal.style.display = 'none';
+    }
+
+    function sendOTP() {
+      const phone = document.getElementById('phone').value;
+      if (phone.length === 10) {
+        alert("OTP has been sent to " + phone);
+        // Integrate actual OTP service here
+      } else {
+        alert("Please enter a valid 10-digit phone number.");
+      }
+    }
+  </script>
+</body>
+</html>
