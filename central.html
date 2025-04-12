@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Central Police Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <style>
+    .notification-badge {
+      background-color: red;
+      color: white;
+      font-size: 0.75rem;
+      padding: 2px 6px;
+      border-radius: 10px;
+      position: absolute;
+      top: -5px;
+      right: -10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="d-flex justify-content-end p-3">
+    <button class="btn btn-danger" onclick="logOut()">Log Out</button>
+  </div>
+
+  <div class="container my-5">
+    <h2 class="text-center mb-4">Central Police - Complaint Management</h2>
+
+    <!-- Notification Section -->
+    <div class="card shadow-sm p-3 mb-4">
+      <h5>🔔 Notifications</h5>
+      <ul id="notificationList" class="list-group">
+        <!-- Notifications will be injected here -->
+      </ul>
+    </div>
+
+    <!-- Filter Section -->
+    <div class="card p-3 mb-4 shadow-sm">
+      <h5 class="mb-3">Filter Complaints</h5>
+      <form class="row g-3">
+        <div class="col-md-3">
+          <input type="text" class="form-control" placeholder="Complaint ID">
+        </div>
+        <div class="col-md-3">
+          <select class="form-select">
+            <option selected disabled>Filter by Issue</option>
+            <option>Theft</option>
+            <option>Assault</option>
+            <option>Fraud</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <select class="form-select">
+            <option selected disabled>Status</option>
+            <option>Assigned</option>
+            <option>Unassigned</option>
+            <option>Closed</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <input type="date" class="form-control" placeholder="Date">
+        </div>
+      </form>
+    </div>
+
+    <!-- Tabs -->
+    <ul class="nav nav-tabs mb-3" id="complaintTabs" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="current-tab" data-bs-toggle="tab" data-bs-target="#current" type="button" role="tab">Current Complaints</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="previous-tab" data-bs-toggle="tab" data-bs-target="#previous" type="button" role="tab">Previous Complaints</button>
+      </li>
+    </ul>
+
+    <div class="tab-content" id="complaintTabsContent">
+      <!-- Current Complaints -->
+      <div class="tab-pane fade show active" id="current" role="tabpanel">
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead class="table-dark">
+              <tr>
+                <th>Complaint ID</th>
+                <th>Complainant</th>
+                <th>Issue</th>
+                <th>Assign To</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>CMP001</td>
+                <td>John Doe</td>
+                <td>Theft</td>
+                <td>
+                  <select class="form-select">
+                    <option selected disabled>Select Officer</option>
+                    <option>Officer A</option>
+                    <option>Officer B</option>
+                  </select>
+                </td>
+                <td>
+                  <button class="btn btn-primary btn-sm">Assign</button>
+                  <button class="btn btn-info btn-sm" onclick="viewComplaintDetails('CMP001')" data-bs-toggle="modal" data-bs-target="#complaintModal">View</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Previous Complaints -->
+      <div class="tab-pane fade" id="previous" role="tabpanel">
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead class="table-secondary">
+              <tr>
+                <th>Complaint ID</th>
+                <th>Complainant</th>
+                <th>Issue</th>
+                <th>Assigned To</th>
+                <th>Status</th>
+                <th>Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>CMP005</td>
+                <td>Jane Smith</td>
+                <td>Fraud</td>
+                <td>Officer B</td>
+                <td>Closed</td>
+                <td>
+                  <button class="btn btn-info btn-sm" onclick="viewComplaintDetails('CMP005')" data-bs-toggle="modal" data-bs-target="#complaintModal">View</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tracking & File Maintenance Section -->
+    <div class="card mt-5 p-4 shadow-sm">
+      <h5 class="mb-3">Tracking & File Maintenance</h5>
+      <p>Track investigation files and uploads by local police.</p>
+      <button class="btn btn-secondary">Upload Document</button>
+      <button class="btn btn-outline-primary">Download Records</button>
+    </div>
+  </div>
+
+  <!-- Complaint Details Modal -->
+  <div class="modal fade" id="complaintModal" tabindex="-1" aria-labelledby="complaintModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Complaint Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div id="complaintDetails" class="mb-3"></div>
+
+          <h6>Attached Documents (Local Police)</h6>
+          <ul id="documentList" class="list-group mb-3"></ul>
+
+          <h6>Status History</h6>
+          <ul id="statusHistory" class="list-group mb-3"></ul>
+
+          <h6>Weekly Comments</h6>
+          <ul id="weeklyComments" class="list-group"></ul>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<Section>
+  <div class="row">
+    <div class="col-12">
+      
+    </div>
+  </div>
+</Section>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Script -->
+  <script>
+    const complaints = {
+      "CMP001": {
+        complainant: "John Doe",
+        issue: "Theft",
+        assignedTo: "Officer A",
+        date: "2025-04-10",
+        status: "In Progress",
+        documents: [
+          { name: "Evidence Photo", url: "#" },
+          { name: "FIR Document", url: "#" },
+          { name: "Local Police Note", url: "#" }
+        ],
+        statusHistory: [
+          { date: "2025-04-10", status: "Assigned" },
+          { date: "2025-04-11", status: "Investigating" },
+          { date: "2025-04-12", status: "In Progress" }
+        ],
+        weeklyComments: [
+          { date: "2025-04-11", comment: "Initial review complete." },
+          { date: "2025-04-12", comment: "Suspect being identified." }
+        ]
+      },
+      "CMP005": {
+        complainant: "Jane Smith",
+        issue: "Fraud",
+        assignedTo: "Officer B",
+        date: "2025-03-30",
+        status: "Closed",
+        documents: [
+          { name: "Bank Statement", url: "#" }
+        ],
+        statusHistory: [
+          { date: "2025-03-28", status: "Assigned" },
+          { date: "2025-03-29", status: "Investigating" },
+          { date: "2025-03-30", status: "Closed" }
+        ],
+        weeklyComments: [
+          { date: "2025-03-29", comment: "Reviewed transactions." }
+        ]
+      }
+    };
+
+    function viewComplaintDetails(id) {
+      const data = complaints[id];
+
+      document.getElementById('complaintDetails').innerHTML = `
+        <p><strong>Complaint ID:</strong> ${id}</p>
+        <p><strong>Complainant:</strong> ${data.complainant}</p>
+        <p><strong>Issue:</strong> ${data.issue}</p>
+        <p><strong>Assigned To:</strong> ${data.assignedTo}</p>
+        <p><strong>Status:</strong> ${data.status}</p>
+        <p><strong>Date:</strong> ${data.date}</p>
+      `;
+
+      const docList = document.getElementById('documentList');
+      docList.innerHTML = '';
+      data.documents.forEach(doc => {
+        const li = document.createElement('li');
+        li.className = 'list-group-item';
+        li.innerHTML = `<a href="${doc.url}" target="_blank">${doc.name}</a>`;
+        docList.appendChild(li);
+      });
+
+      const statusList = document.getElementById('statusHistory');
+      statusList.innerHTML = '';
+      data.statusHistory.forEach(entry => {
+        const li = document.createElement('li');
+        li.className = 'list-group-item';
+        li.textContent = `${entry.date}: ${entry.status}`;
+        statusList.appendChild(li);
+      });
+
+      const commentList = document.getElementById('weeklyComments');
+      commentList.innerHTML = '';
+      data.weeklyComments.forEach(entry => {
+        const li = document.createElement('li');
+        li.className = 'list-group-item';
+        li.innerHTML = `<strong>${entry.date}:</strong> ${entry.comment}`;
+        commentList.appendChild(li);
+      });
+    }
+
+    function showNotifications() {
+      const list = document.getElementById('notificationList');
+      list.innerHTML = `
+        <li class="list-group-item">🆕 New complaint received: <strong>CMP001</strong></li>
+        <li class="list-group-item">📁 Local Police uploaded a document to <strong>CMP001</strong></li>
+        <li class="list-group-item">📝 Weekly comment added to <strong>CMP001</strong></li>
+        <li class="list-group-item">✅ Complaint <strong>CMP005</strong> marked as <strong>Closed</strong></li>
+      `;
+    }
+
+    function logOut() {
+      // Redirect to the login page or perform logout logic
+      window.location.href = 'index.html'; // Replace 'login.html' with the actual login page URL
+    }
+
+    window.onload = showNotifications;
+  </script>
+</body>
+</html>

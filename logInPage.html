@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container d-flex flex-column justify-content-center align-items-center vh-100">
+    <div class="card p-4 shadow" style="max-width: 400px; width: 100%;">
+      <h4 class="text-center mb-3">Login</h4>
+      <form onsubmit="return redirectUser()" id="loginForm">
+        <!-- Role selection -->
+        <div class="mb-3">
+          <label for="userType" class="form-label">Select User Role</label>
+          <select class="form-select" id="userType" required onchange="showCredentials()">
+            <option value="" disabled selected>Select Role</option>
+            <option value="central">Central Police</option>
+            <option value="local">Local Police</option>
+          </select>
+        </div>
+
+        <!-- Credentials - initially hidden -->
+        <div id="credentials" class="hidden">
+          <div class="mb-3">
+            <label for="userId" class="form-label">User ID</label>
+            <input type="text" class="form-control" id="userId" required>
+          </div>
+          <div class="mb-3">
+            <label for="userPassword" class="form-label">Password</label>
+            <input type="password" class="form-control" id="userPassword" required>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100 mt-2">Login</button>
+        <div class="text-center mt-3">
+            <a href="index.html" class="btn btn-secondary">Go to Home</a>
+          </div>
+       
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function showCredentials() {
+      document.getElementById("credentials").classList.remove("hidden");
+    }
+
+    function redirectUser() {
+      const userType = document.getElementById('userType').value;
+      const userId = document.getElementById('userId').value.trim();
+      const password = document.getElementById('userPassword').value.trim();
+
+      if (!userType || !userId || !password) {
+        alert("Please fill in all fields.");
+        return false;
+      }
+
+      // Predefined credentials
+      const users = {
+        central: { username: "Central123", password: "0000" },
+        local: { username: "Local123", password: "1111" }
+      };
+
+      const validUser = users[userType];
+
+      if (userId === validUser.username && password === validUser.password) {
+        // Successful login
+        if (userType === "central") {
+          window.location.href = "central.html";
+        } else if (userType === "local") {
+          window.location.href = "local.html";
+        }
+      } else {
+        alert("Invalid username or password.");
+      }
+
+      return false;
+    }
+  </script>
+</body>
+</html>
