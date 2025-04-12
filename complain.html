@@ -5,14 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>FIR Filing UI</title>
     <link rel="stylesheet" href="style.css">
+    
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Font Awesome CDN -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
 
-    <header>
-        <h1>Smart FIR Filing & Case Tracking Portal</h1>
-    </header>
-
-    <div class="container">
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background:transparent;">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"> <i class="fas fa-shield-cat logo"></i> FIR Portal</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link Gold" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link Gold" href="complain.html">Raise Complaint</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link Gold" href="checkstatus.html">Check Status</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link Gold" href="#fundamentalRights">Fundamental Rights</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link Gold" href="#ContactUS">Contact us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  
+  </header>
+  
+ <div class="container">
         
 <!-- Send OTP Form -->
 <form action="http://localhost/send_otp.php" method="post">
@@ -71,6 +104,42 @@
 
 
     </div>
+    
+  <!-- Footer -->
+
+  <footer class="footer" id="ContactUS">
+    <div class="footer-container">
+      
+      <div class="footer-about">
+        <h3>About Us</h3>
+        <p>At FIR Portal, our mission is to bridge the gap between citizens and law enforcement by providing a fast, reliable, and user-friendly platform to raise and track complaints online. We believe in transparency, accessibility, and the right to justice for everyone. Our portal empowers individuals to lodge FIRs, check their complaint status, and learn about their fundamental rights — all from the comfort of their home. We are committed to making legal assistance more approachable, ensuring every voice is heard and every case gets the attention it deserves.</p>
+      </div>
+  
+      <div class="footer-contact">
+        <h3>Contact</h3>
+        <ul>
+          <li><strong>Email:</strong> teamyodha@example.com</li>
+          <li><strong>Phone:</strong> +91-9876543210</li>
+          <li><strong>Location:</strong> Your City, India</li>
+        </ul>
+      </div>
+  
+      <div class="footer-social">
+        <h3>Follow Me</h3>
+        <div class="social-icons">
+          <a href="#"><i class="fa-brands fa-square-facebook"></i></a>
+          <a href="#"><i class="fa-brands fa-square-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-square-twitter"></i></a>
+          <a href="#"><i class="fa-brands fa-square-youtube"></i></a>
+        </div>
+      </div>
+  
+    </div>
+  
+    <div class="footer-bottom">
+      © 2025 Code Yodha. All rights reserved.
+    </div>
+  </footer>
 
     <script>
         const form = document.getElementById('firForm');
